@@ -3,8 +3,9 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import authRoute from "./routes/auth.js";
 import userRoute from "./routes/user.js";
-import doctorRoute from "./routes/doctor.js";
 import cookieParser from "cookie-parser";
+import hotelRoute from "./routes/hotels.js";
+//import roomRoute from "./routes/rooms.js";
 
 
 
@@ -24,8 +25,9 @@ catch(error){
 app.use(cookieParser());
 app.use(express.json())
 app.use("/api/auth",authRoute);
-app.use("/api/user",userRoute);
-app.use("/api/doctor",doctorRoute);
+app.use("/api/users",userRoute);
+app.use("/api/hotels",hotelRoute);
+//app.use("/api/rooms",roomRoute);
 
 
 
