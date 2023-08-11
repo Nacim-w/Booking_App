@@ -1,16 +1,43 @@
 import User from "../models/User.js";
-export const register = async (req,res,next)=>{
+
+
+export const updateUser =  async(req,res,next)=>
+{
     try{
-        const newUser = new User(
-            {
-                username:req.body.username,
-                password:req.body.password,
-            }
-        );
-        await newUser.save();
-        res.status(200).send('user has been created');
-    }
-    catch(error){
-        next(error);
-    }
+        const updatedUser = await User.findByIdAndUpdate(req.params.id,{$set:req.body},{new:true});
+        res.status(200).json(updatedUser)
+        }
+        catch(error){
+            next(error)
+        }
+}
+export const deleteUser =  async(req,res,next)=>
+{
+    try{
+        await User.findByIdAndDelete(req.params.id);
+        res.status(200).json("User deleted")
+        }
+        catch(error){
+            next(error)
+        }
+}
+export const getUser =  async(req,res,next)=>
+{
+    try{
+        const user = await User.findById(req.params.id || req.user.isAdmin);
+        res.status(200).json(user)
+        }
+        catch(error){
+           next(error)
+        }
+}
+export const getAllUsers =  async(req,res,next)=>
+{
+    try{
+        const users = await User.find();
+        res.status(200).json(users)
+        }
+        catch(error){
+            next(error)
+        }
 }
