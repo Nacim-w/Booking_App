@@ -1,4 +1,5 @@
 import express from "express";
+
 import {
   countByCity,
   countByType,
