@@ -6,7 +6,7 @@ import userRoute from "./routes/user.js";
 import cookieParser from "cookie-parser";
 import hotelRoute from "./routes/hotels.js";
 import cors from "cors";
-//import roomRoute from "./routes/rooms.js";
+import roomRoute from "./routes/rooms.js";
 
 
 
@@ -29,7 +29,7 @@ app.use(express.json())
 app.use("/api/auth",authRoute);
 app.use("/api/users",userRoute);
 app.use("/api/hotels",hotelRoute);
-//app.use("/api/rooms",roomRoute);
+app.use("/api/rooms",roomRoute);
 
 
 
